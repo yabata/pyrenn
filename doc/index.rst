@@ -20,6 +20,9 @@ pyrenn: A recurrent neural network toolbox for python and matlab
 .. __: http://creativecommons.org/licenses/by/4.0/
 
 
+.. image:: https://zenodo.org/badge/18757/yabata/pyrenn.svg
+   :target: https://zenodo.org/badge/latestdoi/18757/yabata/pyrenn
+
 Contents
 --------
 

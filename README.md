@@ -2,6 +2,7 @@
 
 pyrenn is a [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_network) toolbox for Python and Matlab.
 
+[![Documentation Status](https://readthedocs.org/projects/pyrenn/badge/?version=latest)](https://pyrenn.readthedocs.org/en/latest/)  [![DOI](https://zenodo.org/badge/18757/yabata/pyrenn.svg)](https://zenodo.org/badge/latestdoi/18757/yabata/pyrenn)
 
 ## Features
 

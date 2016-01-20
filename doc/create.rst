@@ -2,8 +2,8 @@
 
 .. _create:
 
-Creating a Neural Network
-============
+Create a neural network
+========================
 
 This chapter describes how to create a feed forward or recurrent neural network in pyrenn.
 

@@ -80,4 +80,4 @@ Dependencies (Python)
 .. _Real-Time Recurrent Learning (RTRL) algorithm: http://www.mitpressjournals.org/doi/abs/10.1162/neco.1989.1.2.270#.VpDullJ1F3Q
 .. _Backpropagation Through Time (BPTT) algorithm: https://en.wikipedia.org/wiki/Backpropagation_through_time
 .. _download: https://github.com/yabata/pyrenn/archive/master.zip
-.. _git: http://git-scm.com/ 
+.. _git: http://git-scm.com/

@@ -206,7 +206,7 @@ Python
 Matlab
 ^^^^^^^^^^^
 
-.. mat:function:: CreateNN(nn, [dIn=[0],dIntern=[ ], dOut=[ ]])
+.. c:function:: CreateNN(nn, [dIn=[0],dIntern=[ ], dOut=[ ]])
 
 	Creates a neural network object with random values between -0.5 and 0.5 for the weights.  
 

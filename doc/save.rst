@@ -31,7 +31,7 @@ Example: Saving the neural network object ``net`` to 'C:\nn\mynetwork.csv'
 Matlab
 ^^^^^^^^^^^
 
-.. mat:function:: saveNN(net,filename)
+.. c:function:: saveNN(net,filename)
 
 	Saves a neural network object to a csv file
 
@@ -70,7 +70,7 @@ Example: Load a neural network saved in 'C:\nn\mynetwork.csv' into ``net``
 Matlab
 ^^^^^^^^^^^
 
-.. mat:function:: loadNN(filename)
+.. c:function:: loadNN(filename)
 
 	Load a neural network object from a csv file
 

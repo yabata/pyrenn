@@ -3,7 +3,6 @@
 extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
-	'sphinxcontrib.matlab',
 ]
 #'sphinxcontrib.matlab',
 

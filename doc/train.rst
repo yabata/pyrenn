@@ -84,7 +84,7 @@ Python
 Matlab
 ^^^^^^^^^^^
 
-.. mat:function:: trainLM(P, Y, net ,[k_max=100, E_stop=1e-10])
+.. c:function:: trainLM(P, Y, net ,[k_max=100, E_stop=1e-10])
 
 	Trains the given neural network ``net`` with the training data inputs ``P`` and outputs (targets) ``Y`` using the Levenberg–Marquardt algorithm.
 
@@ -109,7 +109,7 @@ Werbos, Paul: Backpropagation through time: what it does and how to do it. In: P
 Matlab
 ^^^^^^^^^^^
 
-.. mat:function:: trainBFGS(P, Y, net ,[k_max=100, E_stop=1e-10])
+.. c:function:: trainBFGS(P, Y, net ,[k_max=100, E_stop=1e-10])
 
 	Trains the given neural network ``net`` with the training data inputs ``P`` and outputs (targets) ``Y`` using the Broyden–Fletcher–Goldfarb–Shanno algorithm. 
 

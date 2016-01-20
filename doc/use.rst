@@ -78,7 +78,7 @@ Python
 Matlab
 ^^^^^^^^^^^
 
-.. mat:function:: NNOut(P, net ,[P0=[ ], Y0=[ ]])
+.. c:function:: NNOut(P, net ,[P0=[ ], Y0=[ ]])
 
 	Calculates the output of a trained neural network *net* given the inputs *P*
 

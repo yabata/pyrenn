@@ -876,8 +876,8 @@ def saveNN(net,filename):
 	import pandas as pd
 	
 	#create csv write
-	file = open(filename,"wb")
-	writer = csv.writer(file)
+	file = open(filename,"w")
+	writer = csv.writer(file, lineterminator='\n')
 
 	
 	#write network structure nn
@@ -912,6 +912,9 @@ def saveNN(net,filename):
 	
 	#write weight vector w
 	writer.writerow(['w'])
+	file.close()
+	
+	file = open(filename,"ab")
 	np.savetxt(file,net['w'],delimiter=',',fmt='%.55f')
 	
 	#close file
@@ -931,7 +934,7 @@ def loadNN(filename):
 	import pandas as pd
 	
 	#read csv
-	data= list(csv.reader(open(filename,"rb")))
+	data= list(csv.reader(open(filename,"r")))
 
 	#read network structure nn
 	nn = list(np.array(data[1],dtype=np.int))

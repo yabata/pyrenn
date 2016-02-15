@@ -6,7 +6,7 @@ pyrenn is a [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_n
 
 ## Features
 
-  * pyrenn allows to create a wide range of (recurrent) neural network topologies
+  * pyrenn allows to create a wide range of (recurrent) neural network configurations
   * It is very easy to create, train and use neural networks
   * It uses the [Levenberg–Marquardt algorithm](https://en.wikipedia.org/wiki/Levenberg%E2%80%93Marquardt_algorithm) (a second-order Quasi-Newton optimization method) for training, which is much faster than first-order methods like [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent). In the matlab version additionally the [Broyden–Fletcher–Goldfarb–Shanno algorithm](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) is implemented
   * The python version is written in pure python and numpy and the matlab version in pure matlab (no toolboxes needed)

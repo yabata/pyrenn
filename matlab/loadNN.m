@@ -7,49 +7,61 @@ function net = loadNN(filename)
     %   Returns:
     %       net:        neural network object
 
-    [~,~,rawData] = xlsread(filename);
+    fid = fopen(filename);
 
     %read neural network structure nn
-    nn = str2num(rawData{2,1});
+    temp = fgetl(fid);
+    nn = str2num(fgetl(fid));
 
     %read input delays dIn
-    if isnumeric(rawData{4,1})
-       dIn = rawData{4,1};
+    temp = fgetl(fid);
+    temp = fgetl(fid);
+    if isnumeric(temp)
+       dIn = temp;
     else
-       dIn = str2num(rawData{4,1});
+       dIn = str2num(temp);
     end
     
     %read iternal delays dIntern
-    if isnumeric(rawData{6,1})
-        dIntern = rawData{6,1};
-    elseif rawData{6,1}==','
+    temp = fgetl(fid);
+    temp = fgetl(fid);
+    if isnumeric(temp)
+        dIntern = temp;
+    elseif temp==','
         dIntern = []; 
     else
-        dIntern = str2num(rawData{6,1});
+        dIntern = str2num(temp);
     end
    
     %read output delays dOut
-    if isnumeric(rawData{8,1})
-        dOut = rawData{8,1};
-    elseif rawData{8,1}==','
+    temp = fgetl(fid);
+    temp = fgetl(fid);
+    if isnumeric(temp)
+        dOut = temp;
+    elseif temp==','
         dOut = []; 
     else
-        dOut = str2num(rawData{8,1});
+        dOut = str2num(temp);
     end
     
     %read factor for input data normalization normP
-    if isnumeric(rawData{10,1})
-       normP = rawData{10,1};
+    temp = fgetl(fid);
+    temp = fgetl(fid);
+    if isnumeric(temp)
+       normP = temp;
     else
-       normP = str2num(rawData{10,1})';
+       normP = str2num(temp)';
     end
     
     %read factor for output data normalization normY
-    if isnumeric(rawData{12,1})
-       normY = rawData{12,1};
+    temp = fgetl(fid);
+    temp = fgetl(fid);
+    if isnumeric(temp)
+       normY = temp;
     else
-       normY = str2num(rawData{12,1})';
+       normY = str2num(temp)';
     end
+    fclose(fid);
     
     %read weight vector w
     w = csvread(filename,13,0);

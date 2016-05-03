@@ -27,7 +27,7 @@ for m=1:M  %Alle Schichten m
                 w_i=inputs*layers(m);  % Anzahl von Gewichten der Eingangsmatrix IW{m,i,d+1} (Matrix von Eingang i zu Schicht m für Verzögerung d)
                 vec=w_temp(1:w_i);  % Elemente aus Gesamtgewichtsvektor auslesen
                 w_temp=w_temp(w_i+1:end);   %Elemente aus temporären Gesamtgewichtsvektor entfernen
-                IW{m,i,d+1}=(vec2mat(vec,layers(m)))'; %Ausgelesenen Elemente von Vektor vec in Matrix umwamndeln
+                IW{m,i,d+1}=reshape(vec,layers(m),[]);%Ausgelesenen Elemente von Vektor vec in Matrix umwamndeln
             end
         end
     end
@@ -38,7 +38,7 @@ for m=1:M  %Alle Schichten m
             w_i=layers(l)*layers(m);  % Anzahl von Gewichten der Verbindungssmatrix LW{m,l,d+1} (Matrix von Schicht l zu Schicht m für Verzögerung d)
             vec=w_temp(1:w_i);  % Elemente aus Gesamtgewichtsvektor auslesen
             w_temp=w_temp(w_i+1:end);   %Elemente aus temporären Gesamtgewichtsvektor entfernen
-            LW{m,l,d+1}=(vec2mat(vec,layers(m)))'; %Ausgelesenen Elemente von Vektor vec in Matrix umwamndeln
+            LW{m,l,d+1}= reshape(vec,layers(m),[]);%Ausgelesenen Elemente von Vektor vec in Matrix umwamndeln
         end
     end
     

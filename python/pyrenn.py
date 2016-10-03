@@ -1,4 +1,5 @@
 import numpy as np
+import scipy
 
 def CreateNN(nn,dIn=[0],dIntern=[],dOut=[]):
 	"""Create Neural Network
@@ -696,7 +697,7 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 	while True:
 	#run loop until either k_max or E_stop is reached
 
-		JJ = np.dot(J.transpose(),J) #J.transp * J
+		JJ = scipy.linalg.blas.dgemm(alpha=1.0,a=J.T,b=J.T,trans_b=True)#J.transp * J
 		w = net['w'] #weight vector
 		
 		while True:
@@ -707,7 +708,7 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 			
 			#calculate scaled inverse hessian
 			try:
-				G = np.linalg.inv(JJ+dampfac*np.eye(net['N'])) #scaled inverse hessian
+				G = scipy.linalg.inv(JJ+dampfac*np.eye(net['N'])) #scaled inverse hessian
 			except numpy.linalg.LinAlgError:
 				# Not invertible. Go small step in gradient direction
 				w_delta = 1.0/1e10 * g

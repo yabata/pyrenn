@@ -387,6 +387,9 @@ def RTRL(net,data):
 	CsX = {}		#CsX[u]: Set of input layers x with an existing sensitivity matrix
 					#S[q,u,x]
 					#Cs and CsX are generated during the Backpropagation
+					
+	max_delay  = network['max_delay'] # Maximum delay used for updating the dA_dw dict
+    max_layers = len(layers) # Maximum number of layers used for updating the dA_dw dict
 			
 	#Initialize
 	J = np.zeros((Q0*layers[-1],net['N']))	#Jacobian matrix
@@ -492,6 +495,15 @@ def RTRL(net,data):
 			
 		# Jacobian Matrix
 		J[range(((q-q0)-1)*outputs,(q-q0)*outputs),:] = -dA_dw[q,M]
+		
+		# Update both dA_dw and S dictionary after each cycle
+		if q > max_delay:
+            new_dA_dw = {}
+            for dd in range(max_delay):
+                for ll in xrange(1, max_layers+1):
+                    new_dA_dw[(q-dd,ll)] = dA_dw[(q-dd,ll)]
+            dA_dw = new_dA_dw
+            S = {}
 		
 	return J,E,e
 

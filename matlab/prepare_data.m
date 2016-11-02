@@ -45,7 +45,7 @@ if (~isempty(P0)) && (~isempty(Y0))
     a=cell(q0,net.M);  %initialise layer outputs
     for i=1:q0
         for j=1:net.M-1
-            a{i,j}=zeros(net.nn(end),1); %layer ouputs of hidden layers are unknown -> set to zero
+            a{i,j}=zeros(net.nn(j+1),1); %layer ouputs of hidden layers are unknown -> set to zero
         end
         a{i,net.M}=Y0(:,i)./net.normY; %set layer ouputs of output layer 
     end

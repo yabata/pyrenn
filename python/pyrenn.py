@@ -220,7 +220,7 @@ def w2Wb(net):
 					w_i = inputs*layers[m-1]
 					vec =w_temp[0:w_i]
 					w_temp = w_temp[w_i:]
-					IW[m,i,d] = np.reshape(vec,(layers[m-1],len(vec)/layers[m-1]),order='F')
+					IW[m,i,d] = np.reshape(vec,(layers[m-1],int(len(vec)/layers[m-1])),order='F')
 		
 		#internal connection weights
 		for l in L_f[m]:
@@ -228,7 +228,7 @@ def w2Wb(net):
 				w_i = layers[l-1]*layers[m-1]
 				vec =w_temp[0:w_i]
 				w_temp = w_temp[w_i:]
-				LW[m,l,d] = np.reshape(vec,(layers[m-1],len(vec)/layers[m-1]),order='F')
+				LW[m,l,d] = np.reshape(vec,(layers[m-1],int(len(vec)/layers[m-1])),order='F')
 		
 		#bias weights
 		w_i = layers[m-1]
@@ -310,7 +310,7 @@ def NNOut(P,net,P0=None,Y0=None):
 	Returns:
 		Y_NN: 	Neural Network output for input P
 	"""
-	Y=np.zeros((net['layers'][-1],np.size(P)/net['nn'][0]))
+	Y=np.zeros((net['layers'][-1],int(np.size(P)/net['nn'][0])))
 	data,net = prepare_data(P,Y,net,P0=P0,Y0=Y0)
 	IW,LW,b = w2Wb(net) #input-weight matrices,connection weight matrices, bias vectors
 	Y_NN = NNOut_(data['P'],net,IW,LW,b,a=data['a'],q0=data['q0'])[0]
@@ -822,7 +822,7 @@ def prepare_data(P,Y,net,P0=None,Y0=None):
 		a = {} #initialise layer outputs
 		for i in range(1,q0+1):
 			for j in range(1,net['M']):
-				a[i,j]=np.zeros(net['nn'][-1]) #layer ouputs of hidden layers are unknown -> set to zero
+				a[i,j]=np.zeros(net['nn'][j]) #layer ouputs of hidden layers are unknown -> set to zero
 			a[i,net['M']]=Y0[:,i-1]/net['normY'] #set layer ouputs of output layer
 
 		#add previous inputs and outputs to input/output matrices

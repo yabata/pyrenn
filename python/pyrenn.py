@@ -1,4 +1,5 @@
 import numpy as np
+import scipy
 
 def CreateNN(nn,dIn=[0],dIntern=[],dOut=[]):
 	"""Create Neural Network
@@ -386,6 +387,9 @@ def RTRL(net,data):
 	CsX = {}		#CsX[u]: Set of input layers x with an existing sensitivity matrix
 					#S[q,u,x]
 					#Cs and CsX are generated during the Backpropagation
+					
+	max_delay  = network['max_delay'] # Maximum delay used for updating the dA_dw dict
+    max_layers = len(layers) # Maximum number of layers used for updating the dA_dw dict
 			
 	#Initialize
 	J = np.zeros((Q0*layers[-1],net['N']))	#Jacobian matrix
@@ -491,6 +495,15 @@ def RTRL(net,data):
 			
 		# Jacobian Matrix
 		J[range(((q-q0)-1)*outputs,(q-q0)*outputs),:] = -dA_dw[q,M]
+		
+		# Update both dA_dw and S dictionary after each cycle
+		if q > max_delay:
+            new_dA_dw = {}
+            for dd in range(max_delay):
+                for ll in xrange(1, max_layers+1):
+                    new_dA_dw[(q-dd,ll)] = dA_dw[(q-dd,ll)]
+            dA_dw = new_dA_dw
+            S = {}
 		
 	return J,E,e
 
@@ -696,7 +709,7 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 	while True:
 	#run loop until either k_max or E_stop is reached
 
-		JJ = np.dot(J.transpose(),J) #J.transp * J
+		JJ = scipy.linalg.blas.dgemm(alpha=1.0,a=J.T,b=J.T,trans_b=True)#J.transp * J
 		w = net['w'] #weight vector
 		
 		while True:
@@ -707,7 +720,7 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 			
 			#calculate scaled inverse hessian
 			try:
-				G = np.linalg.inv(JJ+dampfac*np.eye(net['N'])) #scaled inverse hessian
+				G = scipy.linalg.inv(JJ+dampfac*np.eye(net['N'])) #scaled inverse hessian
 			except numpy.linalg.LinAlgError:
 				# Not invertible. Go small step in gradient direction
 				w_delta = 1.0/1e10 * g

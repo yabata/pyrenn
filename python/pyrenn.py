@@ -354,6 +354,7 @@ def RTRL(net,data):
 	inputs = net['nn'][0] #number of inputs
 	outputs = net['nn'][-1] #number of outputs
 	layers = net['layers'] #structure of the NN
+	max_delay  = net['dmax'] # Maximum delay in the NN
 	U = net['U'] #set of input layers (input layers or layers with internal delay>0 )
 	X = net['X'] #set of output layers (output of layer is used for cost function calculation
 			# or is added to the input layer with delay>1)
@@ -491,6 +492,17 @@ def RTRL(net,data):
 			
 		# Jacobian Matrix
 		J[range(((q-q0)-1)*outputs,(q-q0)*outputs),:] = -dA_dw[q,M]
+		
+		# Delete entries older than q-max_delay in dA_dw
+		if q > max_delay:
+			new_dA_dw = dict(dA_dw)
+			for key in dA_dw.keys():
+				if key[0] == q-max_delay:
+					del new_dA_dw[key]
+			dA_dw = new_dA_dw
+		
+		# Reset S
+		S = {}
 		
 	return J,E,e
 

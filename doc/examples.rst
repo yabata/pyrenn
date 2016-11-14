@@ -670,7 +670,7 @@ Then the neural network is created. Since we have a system with 3 inputs and 2 o
 
 .. code-block:: matlab
 
-	nn = [3 4 4 2];
+	nn = [3 5 5 2];
 	dIn = [0];
 	dIntern=[];
 	dOut=[1];

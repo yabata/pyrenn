@@ -25,7 +25,7 @@ Ytest = Ytest_(:,4:100);
 %the NN uses the input data at timestep t-1 and t-2
 %The NN has a recurrent connection with delay of 1,2 and 3 timesteps from the output
 % to the first layer (and no recurrent connection of the hidden layers)
-nn = [1 2 2 1];
+nn = [1 3 3 1];
 dIn = [1,2];
 dIntern=[];
 dOut=[1,2,3];

@@ -12,16 +12,16 @@ Ytest = num(:,10:11).';
 %%
 %Create NN
 
-%create recurrent neural network with 1 input, 2 hidden layers with 
-%3 neurons each and 1 output
+%create recurrent neural network with 3 inputs, 2 hidden layers with 
+%5 neurons each and 3 outputs
 %the NN uses the input data at timestep t-1 and t-2
 %The NN has a recurrent connection with delay of 1,2 and 3 timesteps from the output
 % to the first layer (and no recurrent connection of the hidden layers)
-nn = [3 4 4 2];
+nn = [3 5 5 2];
 dIn = [0];
 dIntern=[];
 dOut=[1];
-net = CreateNN(nn,dIn,dIntern,dOut); %alternative: net = CreateNN([3,4,4,2],[0],[],[1]);
+net = CreateNN(nn,dIn,dIntern,dOut); %alternative: net = CreateNN([3,5,5,2],[0],[],[1]);
 
 %%
 %Train with LM-Algorithm

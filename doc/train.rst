@@ -47,10 +47,10 @@ The training repeats adapting the weights of the weight vector :math:`\underline
 * the maximal number of iterations (epochs) :math:`k_{max}` is reached
 * the Error is minimized to the goal :math:`E \leq E_{stop}`
 
-``trainLM()``: train with Levenberg-Marquardt Algorithm
+``train_LM()``: train with Levenberg-Marquardt Algorithm
 --------------------------------------------------------
 
-The function ``trainLM()`` is an implementation of the `Levenberg–Marquardt algorithm`_ (LM) based on: 
+The function ``train_LM()`` is an implementation of the `Levenberg–Marquardt algorithm`_ (LM) based on: 
 
 Levenberg, K.: A Method for the Solution of Certain Problems in Least Squares. Quarterly of Applied Mathematics, 2:164-168, 1944.
 
@@ -65,7 +65,7 @@ Williams, Ronald J.; Zipser, David: A Learning Algorithm for Continually Running
 Python
 ^^^^^^^^^^^
 
-.. py:function:: pyrenn.trainLM(P, Y, net ,[k_max=100, E_stop=1e-10, dampfac=3.0, dampconst=10.0, verbose = False])
+.. py:function:: pyrenn.train_LM(P, Y, net ,[k_max=100, E_stop=1e-10, dampfac=3.0, dampconst=10.0, verbose = False])
 
 	Trains the given neural network ``net`` with the training data inputs ``P`` and outputs (targets) ``Y`` using the Levenberg–Marquardt algorithm.
 
@@ -84,7 +84,7 @@ Python
 Matlab
 ^^^^^^^^^^^
 
-.. c:function:: trainLM(P, Y, net ,[k_max=100, E_stop=1e-10])
+.. c:function:: train_LM(P, Y, net ,[k_max=100, E_stop=1e-10])
 
 	Trains the given neural network ``net`` with the training data inputs ``P`` and outputs (targets) ``Y`` using the Levenberg–Marquardt algorithm.
 
@@ -101,7 +101,7 @@ Matlab
 ``trainBFGS()``: train with Broyden–Fletcher–Goldfarb–Shanno Algorithm (Matlab only)
 -------------------------------------------------------------------------------------
 
-The function ``trainBFGS()`` is an implementation of the `Broyden–Fletcher–Goldfarb–Shanno algorithm`_ (BFGS). The BFGS algorithm is a second order optimization method that uses rank-one updates specified by evaluations of the gradient  :math:`\underline{g}` to approximate the Hessian matrix :math:`H`. In pyrenn the gradient :math:`\underline{g}` for BFGS is calculated using the `Backpropagation Through Time (BPTT) algorithm`_ based on:
+The function ``train_BFGS()`` is an implementation of the `Broyden–Fletcher–Goldfarb–Shanno algorithm`_ (BFGS). The BFGS algorithm is a second order optimization method that uses rank-one updates specified by evaluations of the gradient  :math:`\underline{g}` to approximate the Hessian matrix :math:`H`. In pyrenn the gradient :math:`\underline{g}` for BFGS is calculated using the `Backpropagation Through Time (BPTT) algorithm`_ based on:
 
 Werbos, Paul: Backpropagation through time: what it does and how to do it. In: Proceedings of the IEEE, Nummer 10, Vol. 78 (1990), S. 1550-1560.
 
@@ -109,7 +109,7 @@ Werbos, Paul: Backpropagation through time: what it does and how to do it. In: P
 Matlab
 ^^^^^^^^^^^
 
-.. c:function:: trainBFGS(P, Y, net ,[k_max=100, E_stop=1e-10])
+.. c:function:: train_BFGS(P, Y, net ,[k_max=100, E_stop=1e-10])
 
 	Trains the given neural network ``net`` with the training data inputs ``P`` and outputs (targets) ``Y`` using the Broyden–Fletcher–Goldfarb–Shanno algorithm. 
 

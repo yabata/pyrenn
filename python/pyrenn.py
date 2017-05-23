@@ -720,7 +720,7 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 			#calculate scaled inverse hessian
 			try:
 				G = np.linalg.inv(JJ+dampfac*np.eye(net['N'])) #scaled inverse hessian
-			except numpy.linalg.LinAlgError:
+			except np.linalg.LinAlgError:
 				# Not invertible. Go small step in gradient direction
 				w_delta = 1.0/1e10 * g
 			else:

@@ -958,7 +958,7 @@ def loadNN(filename):
 	if data[5] == ['','']:
 		dIntern = []
 	else:
-		dIntern = list(np.array(data[3],dtype=np.int))
+		dIntern = list(np.array(data[5],dtype=np.int))
 		
 	#read output delays dIOut
 	if data[7] == ['','']:

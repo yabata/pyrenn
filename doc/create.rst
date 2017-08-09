@@ -18,7 +18,7 @@ pyrenn allows to create `multilayer perceptron (MLP)`_ neural networks. A MLP is
 * :math:`M-1` hidden layers, where each layer :math:`m` has an abritary number of neurons :math:`S^\text{m}` 
 * and an output layer with :math:`S^\text{M}` number of neurons, which corespond to the number of outputs of the neural network
 
-The following notation allows n short description of an MLP which gives the number of inputs :math:`R`, the number of layers :math:`M` and the number of neurons :math:`S^\text{m}` in each layer :math:`m`:
+The following notation allows a short description of a MLP which gives the number of inputs :math:`R`, the number of layers :math:`M` and the number of neurons :math:`S^\text{m}` in each layer :math:`m`:
 
 .. math::
 

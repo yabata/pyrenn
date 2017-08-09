@@ -98,7 +98,7 @@ Matlab
 	:rtype: struct
 
 	
-``trainBFGS()``: train with Broyden–Fletcher–Goldfarb–Shanno Algorithm (Matlab only)
+``train_BFGS()``: train with Broyden–Fletcher–Goldfarb–Shanno Algorithm (Matlab only)
 -------------------------------------------------------------------------------------
 
 The function ``train_BFGS()`` is an implementation of the `Broyden–Fletcher–Goldfarb–Shanno algorithm`_ (BFGS). The BFGS algorithm is a second order optimization method that uses rank-one updates specified by evaluations of the gradient  :math:`\underline{g}` to approximate the Hessian matrix :math:`H`. In pyrenn the gradient :math:`\underline{g}` for BFGS is calculated using the `Backpropagation Through Time (BPTT) algorithm`_ based on:

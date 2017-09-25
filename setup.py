@@ -18,6 +18,9 @@ setup(
     author='Dennis Atabay',
     url='http://github.com/yabata/pyrenn',
     description='A recurrent neural network toolbox for Python and Matlab.',
+    install_requires=[
+        'numpy'
+    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

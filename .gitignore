@@ -1,3 +1,6 @@
 *~
 *.pyc
 python/__pycache__\*
+.idea/*
+dist/
+python/pyrenn.egg-info

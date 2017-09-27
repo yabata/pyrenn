@@ -16,7 +16,9 @@ setup(
     py_modules=['pyrenn'],
     license='GPL',
     author='Dennis Atabay',
+    author_email = 'dennis.atabay@gmail.com',
     url='http://github.com/yabata/pyrenn',
+    download_url = 'https://github.com/yabata/pyrenn/archive/v0.1.tar.gz',
     description='A recurrent neural network toolbox for Python and Matlab.',
     install_requires=[
         'numpy'

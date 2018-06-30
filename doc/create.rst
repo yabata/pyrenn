@@ -112,8 +112,7 @@ The connection weights :math:`w` are represented by the matrix :math:`\widetilde
 	w^2_{2,1} & w^2_{2,2} 
 	\end{bmatrix}\;
 	\widetilde{LW}^{3,2}= \begin{bmatrix}
-	w^3_{1,1} \\ 
-	w^3_{2,1} 
+	w^3_{1,1} & w^3_{1,2}	 
 	\end{bmatrix}
 
 `figure 3` shows the array-matrix illustration of the MLP of `figure 1` :

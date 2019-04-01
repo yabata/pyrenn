@@ -735,16 +735,17 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 			#Optimization Step successful!
 				#if E-Enew<=1e-09:
 				dampfac= dampfac/dampconst#adapt scale factor
+				early=0 #reset the early stopping criterium
 				break #go to next iteration
 			else:
 			#Optimization Step NOT successful!\
 				dampfac = dampfac*dampconst#adapt scale factor
 				if abs(E-Enew)<=min_E_step:
+					early=early+1
+					
 					if verbose:
 						print('E-Enew<=min_E_step Encountered!!')
-					early=early+1
-					if early>=5.0:
-						if verbose:
+						if early>=5.0:
 							print('5 Times * E-Enew<=min_E_step Encountered!!')
 					break                    
 		

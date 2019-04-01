@@ -733,7 +733,6 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 			Enew = calc_error(net,data) #calculate new Error E			
 			if Enew<E and abs(E-Enew)>=min_E_step:
 			#Optimization Step successful!
-				#if E-Enew<=1e-09:
 				dampfac= dampfac/dampconst#adapt scale factor
 				early=0 #reset the early stopping criterium
 				break #go to next iteration

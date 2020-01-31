@@ -13,7 +13,9 @@ pyrenn is a [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_n
   * [Real-Time Recurrent Learning (RTRL) algorithm](http://www.mitpressjournals.org/doi/abs/10.1162/neco.1989.1.2.270#.VpDullJ1F3Q) and [Backpropagation Through Time (BPTT) algorithm](https://en.wikipedia.org/wiki/Backpropagation_through_time) are implemented and can be used to implement further training algorithms 
   * It comes with various examples which show how to create, train and use the neural network
 
+## Articles
 
+ * [Pyrenn Levenberg-Marquardt (LM) Neural Network Training Algorithm as an Alternative to Matlab's LM Training Algorithm](https://mikescodeprojects.com/2020/01/12/pyrenn-vs-matlab/)
 
 ## Installation
 

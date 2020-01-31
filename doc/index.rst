@@ -47,6 +47,11 @@ Features
 * `Real-Time Recurrent Learning (RTRL) algorithm`_ and `Backpropagation Through Time (BPTT) algorithm`_ are implemented and can be used to implement further training algorithms 
 * It comes with various examples which show how to create, train and use the neural network
 
+Articles
+--------
+
+ * `Pyrenn Levenberg-Marquardt (LM) Neural Network Training Algorithm as an Alternative to Matlab's LM Training Algorithm<https://mikescodeprojects.com/2020/01/12/pyrenn-vs-matlab>`_
+
 
 Get Started
 -----------

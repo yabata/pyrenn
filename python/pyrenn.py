@@ -674,7 +674,7 @@ def BPTT(net,data):
 
 	
 def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
-			verbose = False):
+			verbose = False,min_E_step=1e-09):
 	"""	Implementation of the Levenberg-Marquardt-Algorithm (LM) based on:
 		Levenberg, K.: A Method for the Solution of Certain Problems in Least Squares.
 		Quarterly of Applied Mathematics, 2:164-168, 1944.
@@ -691,6 +691,7 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 		E_stop:	Termination Error, Training stops when the Error <= E_stop
 		dampconst:	constant to adapt damping factor of LM
 		dampfac:	damping factor of LM
+		min_E_step: minimum step for error. When reached 5 times, training terminates.        
 	Returns:
 		net: 	trained Neural Network 
 	"""
@@ -705,15 +706,15 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 	if verbose:
 		print('Iteration: ',k,'		Error: ',E,'	scale factor: ',dampfac)
 	
+	early=0
+
 	while True:
 	#run loop until either k_max or E_stop is reached
 
 		JJ = np.dot(J.transpose(),J) #J.transp * J
 		w = net['w'] #weight vector
-		
 		while True:
 		#repeat until optimizing step is successful
-			
 			#gradient
 			g = np.dot(J.transpose(),e)
 			
@@ -729,15 +730,23 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 			
 			net['w'] = w + w_delta #new weight vector
 			
-			Enew = calc_error(net,data) #calculate new Error E
-			
-			if Enew<E:
+			Enew = calc_error(net,data) #calculate new Error E			
+			if Enew<E and abs(E-Enew)>=min_E_step:
 			#Optimization Step successful!
-				dampfac= dampfac/dampconst #adapt scale factor
+				dampfac= dampfac/dampconst#adapt scale factor
+				early=0 #reset the early stopping criterium
 				break #go to next iteration
 			else:
-			#Optimization Step NOT successful!
+			#Optimization Step NOT successful!\
 				dampfac = dampfac*dampconst#adapt scale factor
+				if abs(E-Enew)<=min_E_step:
+					early=early+1
+					
+					if verbose:
+						print('E-Enew<=min_E_step Encountered!!')
+						if early>=5.0:
+							print('5 Times * E-Enew<=min_E_step Encountered!!')
+					break                    
 		
 		#Calculate Jacobian, Error and error vector for next iteration
 		J,E,e = RTRL(net,data)
@@ -753,7 +762,10 @@ def train_LM(P,Y,net,k_max=100,E_stop=1e-10,dampfac=3.0,dampconst=10.0,\
 		elif E<=E_stop:
 			print('Termination Error reached')
 			break
-	
+		elif early>=5.0:
+			print('Error decreased 5 times by minimum step. Force training exit.')
+			break
+        
 	net['ErrorHistory'] = ErrorHistory[:k]
 	return net
 	
